@@ -59,12 +59,12 @@ function App() {
         newBuyed[id] += 1
         return newBuyed
       })
-      setCount((count) => count - defineCost(coefAdd, id))
+      setCount((count) => count - defineAutoCost(coefAdd, id))
       setAutoCoef(coef => coef + coefAdd)
     }
   }
   const defineAutoCost = (coefAdd: number, id: number) => {
-    const cost = autoBuyed[id] > 0 ? coefAdd * 1000 + Math.pow(coefAdd * 1.75, autoBuyed[id] * 0.75) : coefAdd * 1000
+    const cost = autoBuyed[id] > 0 ? coefAdd * 1000 + Math.pow(coefAdd * 1.75, autoBuyed[id] * 2.5) : coefAdd * 1000
     return Math.round(cost)
   }
 
@@ -76,11 +76,11 @@ function App() {
         Multiplacator: {coef} <br />
         AutoSuik: {autoCoef}
       </h3>
-        <button onClick={() => handleClick()}>
+        <button className="suika_btn" onClick={() => handleClick()}>
           Suika
         </button>
+      <h2>Upgrade per Click</h2>
       <div className="card">
-        <h2>Upgrade per Click</h2>
         <button onClick={() => handleCost(1, 0)}>
           Upgrade: 1 <br />
           Cost: {defineCost(1, 0)} <br /> 
@@ -142,8 +142,8 @@ function App() {
           Buyed: {buyed[11]}
         </button>
       </div>
+      <h2>Upgrade AutoClick</h2>
       <div className="card">
-        <h2>Upgrade AutoClick</h2>
         <button onClick={() => handleAutoCost(1, 0)}>
           Upgrade: 1 <br />
           Cost: {defineAutoCost(1, 0)} <br /> 
